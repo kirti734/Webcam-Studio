@@ -27,4 +27,6 @@ A web-based camera application that allows users to:
 - JavaScript
 - Canvas API for image processing
 
+   ![Screenshot](starting_view.png)
+
 
