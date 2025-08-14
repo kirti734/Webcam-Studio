@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="logo-png.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("back1.png");
+      }
+      .btn {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        height: 65vh;
+        width: 60vw;
+        border-radius: 50px;
+      }
+      .container {
+        display: flex;
+        background-color: black;
+        margin: auto;
+        margin-top: 56px;
+        height: 67vh;
+        width: 55vw;
+        border-radius: 80px;
+        padding: 45px;
+        gap: 50px;
+      }
+
+      .btn {
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        justify-content: center;
+      }
+
+      .re,
+      .down {
+        border: none;
+        font-size: 23px;
+        background-color: black;
+        color: white;
+        border-radius: 15px;
+        padding: 15px;
+        font-weight: 400;
+      }
+
+      .btn > button:hover {
+        background-color: #f9f969;
+        box-shadow: 0 0 5px #f9f969;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img id="outputImage" alt="Captured" />
+      <div class="btn">
+        <button class="re" id="reshoot">Reshoot</button>
+        <button class="down" id="download">Download</button>
+      </div>
+    </div>
+
+    <script>
+      const img = document.getElementById("outputImage");
+      let dataUrl = localStorage.getItem("capturedImage");
+      const appliedFilter = localStorage.getItem("appliedFilter");
+
+      if (dataUrl) {
+        img.src = dataUrl;
+      } else {
+        img.alt = "No image found.";
+      }
+
+      document.getElementById("reshoot").addEventListener("click", () => {
+        window.location.href = "cam.html";
+      });
+
+      document.getElementById("download").addEventListener("click", () => {
+        var a = document.createElement("a");
+        
+        a.href = dataUrl;
+        a.download = "webcam_photo.png";
+        a.click();
+      });
+
+    </script>
+  </body>
+</html>

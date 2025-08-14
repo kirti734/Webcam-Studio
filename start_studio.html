@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="logo-png.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(30, 29, 29);
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-weight: bolder;
+        font-size: 34px;
+        margin: 10px 90px;
+        align-items: center;
+        color: white;
+      }
+
+      .container {
+        display: flex;
+        border: 4px solid rgb(226, 201, 201);
+        width: 60vw;
+        height: 75vh;
+        margin: auto;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 50px;
+        margin-top: 40px;
+      }
+
+      #oncam {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        background-color: #ffff00;
+        border: 2px solid #ffff33;
+        box-shadow: 0 0 20px #ffff66, 0 0 5px #fdfd83;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .videlele {
+        width: 43vw;
+        height: 65vh;
+        overflow: hidden;
+      }
+      .curtl {
+        position: absolute;
+        z-index: 2;
+        height: 65vh;
+        width: 43vw;
+
+      }
+
+      #cl {
+        transition: transform 4s cubic-bezier(0.63, 0.5, 0.22, 0.88);
+      }
+      button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px #fff;
+      }
+      .tagline{
+        font-weight: bolder;
+        font-size: 23px;
+        margin: 20px 90px;
+        align-items: center;
+        color: white;
+      }
+      .video{
+        height:30pc;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>🎥 Welcome to KArena</h1>
+    <p class="tagline">Lights. Camera. Creation.</p>
+
+    <div class="container">
+      <button id="oncam" onclick="openCamera()">Open Studio</button>
+      <div class="videlele" id="videle">
+        <div id="cl">
+          <img class="curtl" src="curtain.jpg" alt="Image 1" />
+        </div>
+        <video id="video" autoplay playsinline></video>
+      </div>
+    </div>
+
+    <script>
+      const videoElem = document.getElementById("video");
+      const errorElem = document.getElementById("error");
+
+      let receivedMediaStream = null;
+
+      const constraints = {
+        audio: false,
+        video: true,
+      };
+
+      function openCamera() {
+        document.getElementById("oncam").innerText="Welcome to Studio"
+        document.getElementById("cl").style.transform = "translateX(100%)";
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then((mediaStream) => {
+            videoElem.srcObject = mediaStream;
+
+            receivedMediaStream = mediaStream;
+          })
+          .catch((err) => {
+            errorElem.innerHTML = err;
+            errorElem.style.display = "block";
+          });
+
+        setTimeout(() => {
+          window.location.href = "cam.html";
+        }, 4000);
+      }
+    </script>
+  </body>
+</html>

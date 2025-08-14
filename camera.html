@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="logo-png.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      body {
+        background-image: url("back1.png");
+      }
+
+      .container {
+        background-color: black;
+        margin: auto;
+        margin-top: 25px;
+        height: 93vh;
+        width: 45vw;
+        border-radius: 30px;
+      }
+
+      video {
+        border-radius: 30px;
+        height: 31pc;
+        margin: 12px 13px;
+      }
+
+      .filter1 {
+        display: flex;
+        margin: 9px 25px 18px;
+        gap: 30px;
+      }
+
+      .filter1 > button {
+        border: none;
+        font-size: 16px;
+        background-color: black;
+        color: white;
+        border-radius: 15px;
+        padding: 10px;
+      }
+
+      .circle {
+        position: absolute;
+        border-radius: 100%;
+        background-color: black;
+        border: 8px solid white;
+        opacity: 1;
+        width: 65px;
+        height: 65px;
+        margin: 10px 300px;
+      }
+
+      .circle:hover {
+        background-color: white;
+      }
+
+      .filter1 > button:hover {
+        background-color: #b3b320;
+        box-shadow: 0 0 5px #b3b320;
+        color: black;
+      }
+
+      .filter1 > button:active {
+        background-color: #f9f969;
+        color: black;
+      }
+
+      .filter1 > button.active {
+        background-color: #f9f969;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="videlele" id="videle">
+        
+        <video id="video" autoplay playsinline></video>
+        
+      </div>
+
+      <div class="filter1" id="filterSelect">
+        <button id="1">Fever</button>
+        <button id="2">lbiza</button>
+        <button id="3">Blur</button>
+        <button id="4">Warm</button>
+        <button id="5">Water</button>
+        <button id="6">Grayscale</button>
+        <button id="7">Coal</button>
+      </div>
+
+      <button class="circle" id="captureButton"></button>
+      <canvas id="canvas" style="display: none"></canvas>
+    </div>
+  </body>
+
+  <script src="script.js"></script>
+</html>
